@@ -105,7 +105,7 @@ public class CollectionDemo {
 
         //: retainAll()
         // 求出c1和c2的交集并赋值给c1！
-        // 如果c1发生了变化返回true，否则返回false。 也就是说只有c1和c2的交集还是c1的时候，返回false！
+        // ！！如果c1发生了变化返回true，否则返回false。 也就是说只有c1和c2的交集还是c1的时候，返回false！
         System.out.println(c1.retainAll(c2));
         System.out.println(c1);
 
