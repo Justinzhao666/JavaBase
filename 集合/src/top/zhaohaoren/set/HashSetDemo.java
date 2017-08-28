@@ -19,9 +19,9 @@ import java.util.HashSet;
  * Set几个特性：
  * 1、无序，存取结果不一致
  * 2、数据不可以重复
- * 3、没有索引
+ * 3、没有索引---所以不能for遍历，只能迭代
  * <p>
- * 这都是因为存储形式是做hash映射的，所以无法做到上面这些特性
+ * 这都是因为存储形式是做hash映射的，所以无法做到上面这些特性（如果重复了，hash肯定第一个不答应）
  * <p>
  * HashSet存入自定义对象
  * 重写equals方法和hashcode方法    (使用IDE自己生成的就好了)
@@ -84,7 +84,7 @@ public class HashSetDemo {
     }
 }
 
-class Person {
+class Person implements Comparable<Person>{
     private String name;
     private Integer age;
 
@@ -104,6 +104,7 @@ class Person {
         return age != null ? age.equals(person.age) : person.age == null;
     }
 
+    /** hashCode需要保证的：相同的对象计算结果要一致，不同的对象让他们计算结果尽量不一致 */
     @Override
     public int hashCode() {
         // 要尽量让不同对象hashCode计算的结果不同！
@@ -122,6 +123,21 @@ class Person {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (age != null ? age.hashCode() : 0);
         return result;
+    }
+
+    /**
+     * TreeSet需要重写compareTo方法来对TreeSet存入数据进行比较
+     * 返回值：
+     * 0 ： 表示两个数据是相等的，不存入
+     * >0 : 表示o 比当前的数据大，插入到树的右边
+     * <0 : 表示o 比当前数据小，插入到树的左边
+     * */
+    @Override
+    public int compareTo(Person o) {
+        int num = this.age - o.age;
+        // 先按年龄比较，如果年龄一样按照名字比较
+        // compareTo系统实现了字符串按照字典顺序进行比较
+        return num ==0 ? this.name.compareTo(o.name):num;
     }
 }
 
