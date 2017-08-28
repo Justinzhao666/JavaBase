@@ -39,6 +39,7 @@ import java.util.Set;
  *  isEmpty() : 判断是否为空
  *  size() : map的大小
  *  get(K): 根据键获取值
+ *  entrySet() : entry条目的意思，返回map的键-值对对象的一个set集合Set
  *
  *  特性：
  *  键是唯一的，值是可以重复的；
@@ -46,6 +47,9 @@ import java.util.Set;
  *
  *  遍历：
  *  无迭代器，不能迭代的。
+ *  1. 转换为set iterator取值
+ *  2. 转换为set foreach取值
+ *  3. 转换为K-V对的set 进行迭代取值
  */
 public class MapDemo {
     public static void main(String[] agrs) {
@@ -63,6 +67,18 @@ public class MapDemo {
 
         //: map迭代方式2 --推荐，两种其实都是一样，但是foreach更简洁
         mapIterator2(map);
+
+        //: map迭代方式3 -- 更推荐，使用entrySet返回map键值对对象set的方式
+        mapIterator3(map);
+
+        //:存入自定义对象的时候
+        Map<Student,Integer> map2 = new HashMap<>();
+        map2.put(new Student("zhao",20),100);
+        map2.put(new Student("zhao",20),100);
+        map2.put(new Student("qian",22),90);
+        map2.put(new Student("sun",23),80);
+        map2.put(new Student("li",24),70);
+        System.out.print(map2);
 
 
     }
@@ -91,6 +107,23 @@ public class MapDemo {
         System.out.println();
     }
 
+    private static void mapIterator3(Map<String,Integer> map){
+
+        // Set集合中存放的是Map.Entry对象:这是一个键-值对象: 有getkey()和getvalue()方法获取K,V。
+        //使用set迭代器方式
+        Set<Map.Entry<String, Integer>> set =  map.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator = set.iterator();
+        while (iterator.hasNext()){
+            System.out.print("#"+iterator.next().getKey());
+        }
+        System.out.println();
+        // foreach
+        for (Map.Entry<String,Integer> entry:map.entrySet()) {
+            System.out.print("#"+entry.getValue());
+        }
+        System.out.println();
+    }
+
     private static void mapBuildInFunction() {
         Map<String,Integer> map = new HashMap();
         map.put("a",1);
@@ -110,5 +143,45 @@ public class MapDemo {
         System.out.println(iskey);
         System.out.println(isValue);
         System.out.println(isempty);
+    }
+}
+
+
+class Student{
+    private String name;
+    private Integer age;
+
+    public Student(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    /**
+     *  也是需要重写equals和hashcode方法的，当hashmap存入自定义对象的时候，会调用这两个函数来比较对象是否相等
+     * */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (name != null ? !name.equals(student.name) : student.name != null) return false;
+        return age != null ? age.equals(student.age) : student.age == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
