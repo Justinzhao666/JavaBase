@@ -10,7 +10,7 @@
  * @ version 1.0 
  * FileStreamCopy Create on 2017/9/2
  */
-package top.zhaohaoren.iostream;
+package top.zhaohaoren.iobytestream;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -87,7 +87,6 @@ public class FileStreamCopy {
             //所以在write的时候指定写入的数据偏移量为读的时候读到的字节数，保证读写数据一致。
             fos.write(content, 0, len);
         }
-
         fos.close();
         fis.close();
     }

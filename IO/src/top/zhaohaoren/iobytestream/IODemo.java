@@ -1,4 +1,4 @@
-package top.zhaohaoren.iostream;/*
+package top.zhaohaoren.iobytestream;/*
  * Copyright (c) 2017/9/2 by zhaohaoren
  * Welcome to visit my site:
  *  
@@ -8,7 +8,7 @@ package top.zhaohaoren.iostream;/*
  * @ Lan: Java
  * @ author zhaohaoren
  * @ version 1.0 
- * top.zhaohaoren.iostream.IODemo Create on 2017/9/2
+ * top.zhaohaoren.iobytestream.IODemo Create on 2017/9/2
  */
 
 /**
@@ -26,6 +26,8 @@ package top.zhaohaoren.iostream;/*
  *  字符流
  *      Writer
  *      Reader
+ *
+ *  read方法，一次可以读取文件中的一个字节，或者指定缓冲区大小的字节数。---多使用缓冲区，减少IO次数，减少硬盘消耗
  *
  *  使用IO流的最后需要关闭资源：因为IO流相当于在内存和磁盘之间建立一个管道，读写完成了需要关闭这个管道！
  *

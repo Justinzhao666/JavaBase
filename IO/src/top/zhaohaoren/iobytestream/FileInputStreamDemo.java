@@ -10,7 +10,7 @@
  * @ version 1.0 
  * FileInputStreamDemo Create on 2017/9/2
  */
-package top.zhaohaoren.iostream;
+package top.zhaohaoren.iobytestream;
 
 import java.io.FileInputStream;
 import java.io.IOException;
