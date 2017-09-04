@@ -24,8 +24,8 @@ import java.io.PrintStream;
  */
 public class PrintStreamDemo {
     public static void main(String[] args) throws FileNotFoundException {
-        PrintStream ps = System.out;
-//        PrintStream ps = new PrintStream("zhaoahaoren.txt");
+        PrintStream ps = System.out; //获取标准输出流，默认指向的是控制台
+//      PrintStream ps = new PrintStream("zhaoahaoren.txt");
 
         ps.println(97); //将97转为字符串
         ps.write(97); // 将97进行查表 存入字符。
