@@ -1,0 +1,7 @@
+<!--ELEMENT申明元素，表示一个标签，放在第一个表示是跟标签-->
+<!ELEMENT students (student*) > <!--students是根标签，里面存放student标签，*正则表示可以存放0~多个student标签-->
+<!ELEMENT student (name,age,sex)> <!--student里面可以存放哪些标签-->
+<!ELEMENT name (#PCDATA)> <!--#PCDATA表示该标签中可以写文本-->
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ATTLIST student number ID #REQUIRED><!--attr list 表示属性列表，指定student标签可以填写的属性只能为number，ID表示该属性值需要是唯一的，#REQUIRED表示是必须填写number属性-->

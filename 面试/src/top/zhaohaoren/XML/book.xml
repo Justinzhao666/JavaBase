@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<web-app xmlns="http://maven.apache.org/POM/4.0.0"> 一般这里会有一些引用用来对xml进行约束，可以写哪些标签不可以写哪些标签-->
+<!--只能有一个根元素-->
+<books>
+    <book>
+        <name>JAVA</name>
+        <price>48</price>
+    </book>
+    <book>
+        <name>C#</name>
+        <price>50</price>
+    </book>
+    <!--属性必须加上双引号-->
+    <book id="python book">
+        <name>Python</name>
+        <price>&lt;20</price> <!-- 特殊符号要使用转义字符，或者使用CDATA标签 -->
+        <![CDATA[
+			if(5>3&&3<6)<abc></abc>
+		]]>
+    </book>
+    <!--以后web基本就是这么使用xml的，从这里点击可以跳转到类文件中，该底层实现机制就是反射-->
+    <xmlClass>top.zhaohaoren.XML.XmlClassDemo</xmlClass>
+
+</books>

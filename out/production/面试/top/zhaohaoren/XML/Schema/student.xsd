@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--xmlns随便写什么都行，一般是网址。表示命名空间，类比为java文件的包名，可以再xml中引用
+    xmlns，targetNamespace都是namespace的意思，两者要保持一致
+    xmlns:xsd 格式是固定的，使得约束可以正常工作
+    -->
+<xsd:schema xmlns="http://www.zhaohaoren.top/xml"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.zhaohaoren.top/xml" elementFormDefault="qualified">
+    <!--第一个element表示根标签，type随便写表示给这个name起一个别名-->
+    <xsd:element name="students" type="studentsType"/>
+    <!--复杂类型：表示该标签里面还可以写标签，studentsType此时修饰students-->
+    <xsd:complexType name="studentsType">
+        <xsd:sequence>
+            <!--里面只存放一个标签 可以存放0~多个student标签-->
+            <xsd:element name="student" type="studentType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--studentType下面是用来约束student标签的-->
+    <xsd:complexType name="studentType">
+        <!--序列：student下可以填写标签的顺序必须遵循下面的顺序-->
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/> <!--name必须是字符串-->
+            <xsd:element name="age" type="ageType" />
+            <xsd:element name="sex" type="sexType" />
+        </xsd:sequence>
+        <!--student标签需要有name属性，require表示必须要给number属性-->
+        <xsd:attribute name="number" type="numberType" use="required"/>
+    </xsd:complexType>
+    <!--下面是对student里面子标签的规范进行约束-->
+    <xsd:simpleType name="sexType">
+        <xsd:restriction base="xsd:string">
+            <!--要求是字符串，并且值只能是male和female-->
+            <xsd:enumeration value="male"/>
+            <xsd:enumeration value="female"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ageType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="256"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="numberType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="itcast_\d{4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema> 

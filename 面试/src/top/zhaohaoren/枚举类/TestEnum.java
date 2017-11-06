@@ -12,11 +12,19 @@
  */
 package top.zhaohaoren.枚举类;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  *
  */
 public class TestEnum {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+        double i = 1.1/0;
+        double i1 = 0.0/0;
+        System.out.println(i);
+        System.out.println(i1);
+        System.out.println("a".getBytes("unicode").length);
 
         JDKEnum3 em = JDKEnum3.MON;
         System.out.println(em);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+	1、编写根标签,是在根标签中添加引用的
+	2、引入实例名称空间 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	3、引入名称空间 xsi:schemaLocation="http://www.zhaohaoren.top/xml student.xsd"
+	4、引入默认的名称空间
+
+	xmlns:zhaohaoren 对该约束起一个别名，作为命名空间，当一个xml有多个约束的时候，可以使用[命名空间:标签]来表示。
+	如果只有一个约束，可以省略不写该标签。
+ -->
+
+<students 
+	xmlns="http://www.zhaohaoren.top/xml"
+	xmlns:zhaohaoren="http://www.zhaohaoren.top/xml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zhaohaoren.top/xml student.xsd">
+	<student number="itcast_1001">
+		<name>tom</name>
+		<age>21</age>
+		<sex>male</sex>
+	</student>
+	<zhaohaoren:student number="itcast_1003">
+		<name>zhaohaoren</name>
+		<age>23</age>
+		<sex>male</sex>
+	</zhaohaoren:student>
+</students>
