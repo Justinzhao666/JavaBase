@@ -16,6 +16,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * 一个可重入的互斥锁 Lock，它具有与使用 synchronized 方法和语句所访问的隐式监视器锁相同的一些基本行为和语义，但功能更强大。 
  * 
  * 前面的notify等不能显式的指定唤醒哪一个线程，ReentrantLock提供了一套机制可以实现唤醒指定线程！
+ *
+ * ReentrantLock 结合 Condition来实现线程间通信。
+ *
  */
 public class ThreadReentrantLock {
 
@@ -43,8 +46,8 @@ public class ThreadReentrantLock {
 						p.printB();
 					}
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 				}
 			};
 		}.start();

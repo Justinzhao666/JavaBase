@@ -18,8 +18,8 @@ import java.io.IOException;
 
 /**
  * 图片文字加密
- * <p>
- * 使用抑或 ^
+ *
+ * 使用抑或 ^  加密解密对称，两次抑或还原。
  * 因为一个字节抑或两字等于原字节！
  */
 public class PictureEncry {

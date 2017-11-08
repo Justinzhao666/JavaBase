@@ -37,7 +37,6 @@ import java.util.TreeSet;
  * 重点：(两种排序)
  * 1、自定义类实现 Comparable 以满足排序的需求；
  * 2、jdk自带类向set传入 Comparator 对象比较器来定义排序方式；
- *
  */
 public class TreeSetDemo {
     public static void main(String[] agrs) {

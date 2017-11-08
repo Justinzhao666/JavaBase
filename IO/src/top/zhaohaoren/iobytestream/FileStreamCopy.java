@@ -29,7 +29,7 @@ public class FileStreamCopy {
 
     /**
      * ##不考虑## -----效率低
-     * <p>
+     *
      * 一个个字节的读，然后写入新文件，
      * read(int)
      * write(int)
@@ -49,7 +49,7 @@ public class FileStreamCopy {
 
     /**
      * ##不考虑## -----占内存
-     * <p>
+     *
      * 将文件一次加载到内存中，然后去写！
      * available() 获取文件的大小
      * read(byte[])
